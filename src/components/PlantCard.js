@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 
 function PlantCard({name, image, id, price}) {
+
+  const [isInStock, setInStock] = useState(true)
+
+  const handleClick = () =>{
+    setInStock(prev => !prev)
+  }
+
+
 
   return (
   
@@ -10,10 +18,18 @@ function PlantCard({name, image, id, price}) {
       <img src={image} alt={name} />
       <h4>{name}</h4>
       <p>Price: {price}</p>
-      {true ? (
-        <button className="primary">In Stock</button>
-      ) : (
-        <button>Out of Stock</button>
+      {isInStock ? (
+        <button 
+        onClick = {handleClick}
+        className="primary">In Stock
+        </button>
+      ) 
+      : 
+      //false:
+      (
+        <button onClick = {handleClick}>
+          Out of Stock
+          </button>
       )}
     </li>
   
